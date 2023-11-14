@@ -1,0 +1,51 @@
+﻿@{ var userInfomatiom = (QuanLyKhachSan.Models.User)Session["USER"]; }
+
+<header id="masthead" class="d-flex align-items-center justify-content-center justify-content-md-start site-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 d-none d-lg-flex align-items-center justify-content-end">
+                <div>
+                    <nav class="site-nav site-nav-left d-none d-lg-block">
+                        <ul id="menu-site-navigation-left" class="menu justify-content-end">
+                            <li class="nav-item "><a href="/" class="nav-link">Trang chủ</a></li>
+
+                            <li class="nav-item "><a href="/PublicHome/Introduce" class="nav-link">Giới thiệu</a></li>
+
+                            @*<li class="nav-item "><a href="/PublicHome/AboutUs" class="nav-link">Về chúng tôi</a></li>*@
+
+                            <li class="nav-item "><a href="/PublicRoom/Index/0" class="nav-link">Phòng trống</a></li>
+
+                            <li class="nav-item "><a href="/PublicHome/Contact" class="nav-link">Liên hệ</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-12 col-lg-2 d-flex align-items-center justify-content-center">
+                <div class="mb-0 site-logo"><a href="" rel=""><img class="logo logo-1" src="~/Content/images/logo.png" alt=""></a></div>
+            </div>
+            <div class="col-lg-5 d-none d-lg-flex align-items-center justify-content-start">
+                <div>
+                    <nav class="site-nav site-nav-right d-none d-lg-flex justify-content-end">
+                        <ul id="menu-site-navigation-right" class="menu">
+
+                            @if (userInfomatiom != null)
+                            {
+                                <li class="nav-item"><a href="/PublicBooking/GetBookings/@userInfomatiom.idUser" class="nav-link">Lịch sử đặt phòng</a></li>
+                                <li class="nav-item"><a href="/PublicUser/ProfileUser/@userInfomatiom.idUser" class="nav-link">@userInfomatiom.fullName</a></li>
+                                <li class="nav-item cta"><a href="/PublicAuthentication/Logout" class="nav-link"><span>Đăng xuất</span></a></li>
+                            }
+                            else
+                            {
+                                <li class="nav-item cta"><a href="/PublicAuthentication/Login" class="nav-link"><span>Đăng nhập</span></a></li>
+                            }
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <a class="h4 d-lg-none mb-0 position-absolute aside-nav-toggler" href="javascript:void();" style="top: 50%;left: 20px;transform: translateY(-50%);font-size: 2rem;"><i class="fal fa-align-justify"></i></a>
+
+
+        </div>
+    </div>
+
+</header>
